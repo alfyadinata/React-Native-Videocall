@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, Modal, Alert, ActivityIndicator, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, Image, Modal, ActivityIndicator } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { Button, Searchbar } from 'react-native-paper'
 import { useState } from 'react/cjs/react.development'
@@ -187,7 +187,6 @@ const Explore = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false)
-            console.warn('ok')
         }, 1000);
     }, [setIsLoading])
     return (
@@ -208,8 +207,10 @@ const Explore = () => {
                         <Image resizeMode="contain" resizeMethod="scale" source={{ uri: 'https://images.pexels.com/photos/2859616/pexels-photo-2859616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }} style={[styles.img, { width: 343, height: 200, }]} />
                         <View style={{ padding: 10 }}>
                             <Text style={styles.peopleName}>Olivia Stefani, 22 Years Old</Text>
-                            <Text>New comments cannot be posted and votes cannot be cast. Sort by. best ... I tried to wrap touchableopacity around modal but it is not working. If you know so ...
-Anda mengunjungi halaman ini pada 23/12/20.</Text>
+                            <Text>
+                                New comments cannot be posted and votes cannot be cast. Sort by. best ... I tried to wrap touchableopacity around modal but it is not working. If you know so ...
+                                Anda mengunjungi halaman ini pada 23/12/20.
+                            </Text>
                             <Button
                                 onPress={toggleModal}
                                 mode="contained"
@@ -252,7 +253,7 @@ Anda mengunjungi halaman ini pada 23/12/20.</Text>
                     }
                 </View>
                 <ActivityIndicator
-                    color={colors.primary}
+                    color={colors.blackShadow}
                     size="large"
                 />
             </ScrollView>
@@ -271,7 +272,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     img: {
-        // flex: 1,
         width: 200,
         height: 120,
         borderColor: colors.white,

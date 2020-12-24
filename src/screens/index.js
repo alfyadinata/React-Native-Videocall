@@ -3,5 +3,6 @@ import Login from './Login';
 import Home from './Home'
 import Splash from './Splash'
 import Chat from './Chat';
+import Explore from './Explore'
 
-export { Register, Login, Home, Splash, Chat }
+export { Register, Login, Home, Splash, Chat, Explore }

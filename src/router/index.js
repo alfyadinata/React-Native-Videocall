@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { colors } from '../styles/colors'
 
-import { Register, Login, Home, Splash, Chat } from "../screens";
+import { Register, Login, Home, Splash, Chat, Explore } from "../screens";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,7 +24,7 @@ const MyTheme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        // primary: '#fff',
+        primary: colors.blackShadow,
     },
 };
 
@@ -38,7 +38,7 @@ function ChatStack() {
 
 function mainApp() {
     return (
-        <Tab.Navigator activeColor={colors.primary} >
+        <Tab.Navigator activeColor={colors.blackShadow} >
             <Tab.Screen
                 name="Home"
                 component={Home}
@@ -50,7 +50,7 @@ function mainApp() {
             />
             <Tab.Screen
                 name="Explore"
-                component={Home}
+                component={Explore}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="account-search-outline" color={color} size={28} />
