@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { colors } from '../styles/colors'
 
-import { Register, Login, Home, Splash, Chat, Explore } from "../screens";
+import { Register, Login, Home, Splash, Chat, Explore, CallHistory } from "../screens";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,7 +24,7 @@ const MyTheme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        primary: colors.blackShadow,
+        primary: colors.primary,
     },
 };
 
@@ -59,7 +59,7 @@ function mainApp() {
             />
             <Tab.Screen
                 name="Call"
-                component={Home}
+                component={CallHistory}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="video-box" color={color} size={28} />

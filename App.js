@@ -6,7 +6,7 @@ import AppNavigator from './src/router'
 function App() {
   return (
     <Fragment>
-      <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+      <StatusBar barStyle="light-content" backgroundColor="#182C61" />
       <AppNavigator />
       <FlashMessage position="top" />
     </Fragment>
