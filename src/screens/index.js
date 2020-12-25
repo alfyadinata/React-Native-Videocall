@@ -4,5 +4,11 @@ import Home from './Home'
 import Splash from './Splash'
 import Chat from './Chat';
 import Explore from './Explore'
+import CallHistory from './CallHistory'
 
-export { Register, Login, Home, Splash, Chat, Explore }
+export {
+    Register, Login,
+    Home, Splash,
+    Chat, Explore,
+    CallHistory
+}
