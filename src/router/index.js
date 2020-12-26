@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { colors } from '../styles/colors'
 
 import { Register, Login, Home, Splash, Chat, Explore, CallHistory } from "../screens";
+import { Text, View } from 'react-native';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function AuthNavigator() {
     return (
@@ -18,6 +21,22 @@ function AuthNavigator() {
             <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
     )
+}
+
+function Feed() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Feed Screen</Text>
+        </View>
+    );
+}
+
+function Article() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Article Screen</Text>
+        </View>
+    );
 }
 
 const MyTheme = {
@@ -36,7 +55,7 @@ function ChatStack() {
     )
 }
 
-function mainApp() {
+function BottomApp() {
     return (
         <Tab.Navigator activeColor={colors.blackShadow} >
             <Tab.Screen
@@ -68,6 +87,48 @@ function mainApp() {
             />
         </Tab.Navigator>
     )
+}
+
+function DrawerContent() {
+    return (
+        <View>
+            <Text>lorem</Text>
+        </View>
+    )
+}
+
+function mainApp() {
+    return (
+        <Drawer.Navigator
+            // drawerContent={props => <DrawerContent {...props} />}
+            children={<Text>Hola</Text>}
+        >
+            <Drawer.Screen
+                name="App"
+                component={BottomApp}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={28} />
+                    ),
+                    drawerLabel: 'Home Application'
+                }}
+            />
+            <Drawer.Screen
+                name="Feed"
+                component={Feed}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="account-edit" color={color} size={28} />
+                    ),
+                    drawerLabel: 'Edit Profile'
+                }}
+            />
+            <Drawer.Screen
+                name="Article"
+                component={Article}
+            />
+        </Drawer.Navigator>
+    );
 }
 
 function SplashStack() {

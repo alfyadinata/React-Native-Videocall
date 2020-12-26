@@ -66,16 +66,11 @@ const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Appbar.Header>
-                <TouchableOpacity>
-                    <Appbar.Action icon="menu" color={colors.white} />
-                </TouchableOpacity>
+                <Appbar.Action icon="menu" color={colors.white} onPress={() => navigation.openDrawer()} />
                 <Appbar.Content title="Chats" subtitle="Alfy Adinata" />
                 <TouchableOpacity>
                     <Appbar.Action icon="magnify" color={colors.white} />
                 </TouchableOpacity>
-                {/* <TouchableOpacity>
-                    <Appbar.Action icon="dots-vertical" />
-                </TouchableOpacity> */}
             </Appbar.Header>
             <Spinner
                 visible={visible}
