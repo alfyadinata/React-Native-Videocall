@@ -4,11 +4,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Text, View } from 'react-native';
 
 import { colors } from '../styles/colors'
 
 import { Register, Login, Home, Splash, Chat, Explore, CallHistory } from "../screens";
-import { Text, View } from 'react-native';
+
+// components
+import { DrawerContent } from '../components'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -89,19 +92,10 @@ function BottomApp() {
     )
 }
 
-function DrawerContent() {
-    return (
-        <View>
-            <Text>lorem</Text>
-        </View>
-    )
-}
-
 function mainApp() {
     return (
         <Drawer.Navigator
-            // drawerContent={props => <DrawerContent {...props} />}
-            children={<Text>Hola</Text>}
+            drawerContent={(props) => <DrawerContent {...props} />}
         >
             <Drawer.Screen
                 name="App"
