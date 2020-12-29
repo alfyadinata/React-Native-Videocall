@@ -6,8 +6,10 @@ import { useState } from 'react/cjs/react.development'
 import { colors } from '../../styles/colors'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import { useEffect } from 'react'
-
-const Explore = () => {
+import {
+    useFocusEffect,
+} from '@react-navigation/native';
+const Explore = ({ navigation }) => {
     const [data, setData] = useState([
         {
             path: 'https://images.pexels.com/photos/4394955/pexels-photo-4394955.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
@@ -189,11 +191,24 @@ const Explore = () => {
             setIsLoading(false)
         }, 1000);
     }, [setIsLoading])
+
+    useFocusEffect(
+        React.useCallback(() => {
+            // Do something when the screen is focused
+            return () => {
+                // Do something when the screen is unfocused
+                // Useful for cleanup functions
+            };
+        }, [])
+    );
     return (
         <View style={styles.container}>
-            <Searchbar
-                placeholder="Find People"
-            />
+            <TouchableOpacity onPressIn={() => navigation.navigate('Search')}>
+                <Searchbar
+                    placeholder="Find People"
+                    editable={false}
+                />
+            </TouchableOpacity>
             <Modal
                 animationType="slide"
                 transparent={true}
