@@ -6,11 +6,11 @@ import Chat from './Chat';
 import Explore from './Explore'
 import CallHistory from './CallHistory'
 import Search from './Search'
-
+import Profile from './Profile'
 export {
     Register, Login,
     Home, Splash,
     Chat, Explore,
     CallHistory,
-    Search
+    Search, Profile
 }
