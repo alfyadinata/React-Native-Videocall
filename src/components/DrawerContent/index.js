@@ -15,7 +15,7 @@ import {
 } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function DrawerContent(props) {
+function DrawerContent({ navigation }, props) {
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>
@@ -57,6 +57,7 @@ function DrawerContent(props) {
               />
             )}
             label="Profile"
+            onPress={() => navigation.navigate('Profile')}
           />
           <DrawerItem
             icon={({ color, size }) => (
