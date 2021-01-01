@@ -8,7 +8,11 @@ import { Text, View } from 'react-native';
 
 import { colors } from '../styles/colors'
 
-import { Register, Login, Home, Splash, Chat, Explore, CallHistory, Search } from "../screens";
+import {
+    Register, Login, Home, Splash,
+    Chat, Explore, CallHistory, Search,
+    Profile
+} from "../screens";
 
 // components
 import { DrawerContent } from '../components'
@@ -141,6 +145,14 @@ function SearchStack() {
     )
 }
 
+function ProfileStack() {
+    return (
+        <Stack.Navigator headerMode="none">
+            <Stack.Screen name="Profile" component={Profile} />
+        </Stack.Navigator>
+    )
+}
+
 function AppNavigator() {
     return (
         <NavigationContainer theme={MyTheme}>
@@ -150,6 +162,7 @@ function AppNavigator() {
                 <Stack.Screen name="MainApp" component={mainApp} />
                 <Stack.Screen name="Chat" component={Chat} />
                 <Stack.Screen name="Search" component={SearchStack} />
+                <Stack.Screen name="Profile" component={ProfileStack} />
             </Stack.Navigator>
         </NavigationContainer>
     );
