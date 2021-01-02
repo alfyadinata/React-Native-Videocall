@@ -20,6 +20,8 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+#java
+java_pid9236.hprof
 
 # Android/IntelliJ
 #
