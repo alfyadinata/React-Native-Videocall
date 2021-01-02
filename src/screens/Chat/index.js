@@ -7,6 +7,7 @@ import { TextInput, Card, Paragraph, Appbar } from 'react-native-paper'
 import { Fire } from '../../config'
 import { colors } from '../../styles/colors'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Gap } from '../../components'
 
 const Chat = ({ route, navigation }) => {
     const [user, setUser] = useState({})
@@ -105,12 +106,24 @@ const Chat = ({ route, navigation }) => {
         <View style={styles.container}>
             <Appbar.Header>
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
-                <Appbar.Content title="Title" subtitle="Subtitle" />
+                <Appbar.Content title="Stefi" subtitle="last seen at 08:30" />
                 <Appbar.Action icon="magnify" onPress={() => console.log('Hello')} />
-                <Appbar.Action icon="dots-vertical" onPress={() => console.log('Hello')} />
+                <Appbar.Action icon={() => <MaterialCommunityIcons name='video' size={25} color={colors.white} />} onPress={() => navigation.navigate('VideoCall')} />
             </Appbar.Header>
+            <Gap height={10} />
             <ScrollView>
-                {
+                <View style={{ margin: 10, }}>
+                    <View style={styles.receivedMessage}>
+                        <Paragraph>This is similar to how you would customize a stack navigator — there are some properties that are set when you initialize the tab navigator and others that can be customized per-screen in options</Paragraph>
+                        <Paragraph style={styles.time}>23:30</Paragraph>
+                    </View>
+                    <Gap height={10} />
+                    <View style={styles.sentMessage}>
+                        <Paragraph>This is similar to how you would customize a stack navigator — there are some properties that are set when you initialize the tab navigator and others that can be customized per-screen in options</Paragraph>
+                        <Paragraph style={styles.time}>18:00</Paragraph>
+                    </View>
+                </View>
+                {/* {
                     chatData.map((chat) => {
                         return (
                             <Fragment key={chat.id}>
@@ -134,7 +147,7 @@ const Chat = ({ route, navigation }) => {
                             </Fragment>
                         )
                     })
-                }
+                } */}
             </ScrollView>
             <View style={styles.inputContainer}>
                 <TextInput
@@ -154,35 +167,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff'
     },
-    inputContainer: {
-
+    receivedMessage: {
+        backgroundColor: colors.green2,
+        padding: 10,
+        borderTopRightRadius: 24,
+        borderBottomRightRadius: 24,
+        borderBottomLeftRadius: 24, maxWidth: '80%'
     },
-    times: {
-        marginLeft: 20
+    sentMessage: {
+        backgroundColor: colors.gray,
+        padding: 10,
+        borderTopLeftRadius: 24,
+        borderBottomRightRadius: 24,
+        borderBottomLeftRadius: 24,
+        maxWidth: '80%', alignSelf: 'flex-end'
     },
-    messageIn: {
-        paddingRight: '50%'
-    },
-    messageOut: {
-        paddingLeft: '50%'
-    },
-    messaging: {
-        padding: 10
-    },
-    card: {
-        paddingRight: 10,
-        shadowColor: colors.blackShadow,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    peopleName: {
-        fontWeight: 'bold',
-        opacity: 0.5
+    time: {
+        left: '90%',
+        top: '90%',
+        position: 'absolute'
     }
 })
 
