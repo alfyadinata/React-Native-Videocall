@@ -1,3 +1,4 @@
 import Fire from './Fire'
+import requestCameraAndAudioPermission from './permission'
 
-export { Fire }
+export { Fire, requestCameraAndAudioPermission }
