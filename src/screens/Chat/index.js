@@ -108,7 +108,7 @@ const Chat = ({ route, navigation }) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Stefi" subtitle="last seen at 08:30" />
                 <Appbar.Action icon="magnify" onPress={() => console.log('Hello')} />
-                <Appbar.Action icon={() => <MaterialCommunityIcons name='video' size={25} color={colors.white} />} onPress={() => console.log('Hello')} />
+                <Appbar.Action icon={() => <MaterialCommunityIcons name='video' size={25} color={colors.white} />} onPress={() => navigation.navigate('VideoCall')} />
             </Appbar.Header>
             <Gap height={10} />
             <ScrollView>

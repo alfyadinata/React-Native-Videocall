@@ -11,7 +11,7 @@ import { colors } from '../styles/colors'
 import {
     Register, Login, Home, Splash,
     Chat, Explore, CallHistory, Search,
-    Profile
+    Profile, Video
 } from "../screens";
 
 // components
@@ -161,6 +161,7 @@ function AppNavigator() {
                 <Stack.Screen name="Auth" component={AuthNavigator} />
                 <Stack.Screen name="MainApp" component={mainApp} />
                 <Stack.Screen name="Chat" component={Chat} />
+                <Stack.Screen name="VideoCall" component={Video} />
                 <Stack.Screen name="Search" component={SearchStack} />
                 <Stack.Screen name="Profile" component={ProfileStack} />
             </Stack.Navigator>
