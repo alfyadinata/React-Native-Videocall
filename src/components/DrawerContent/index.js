@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import {
   DrawerContentScrollView, DrawerItem
 } from '@react-navigation/drawer';
@@ -14,10 +14,58 @@ import {
   Switch,
 } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { showMessage } from 'react-native-flash-message';
+import Spinner from 'react-native-loading-spinner-overlay';
+import { Fire } from '../../config'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DrawerContent({ navigation }, props) {
+  const [visible, setVisible] = useState(false)
+  const signOut = () => {
+    Alert.alert(
+      '',
+      'Sign Out ?',
+      [
+        {
+          text: 'Yeah',
+          onPress: signOutProcess
+        },
+        {
+          text: 'No',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+      ]
+    )
+  }
+
+  const signOutProcess = () => {
+    Fire.auth().signOut().then(async res => {
+      await AsyncStorage.clear()
+    }).catch((err) => {
+      showMessage({
+        message: err.message,
+        position: 'center',
+        type: 'warning'
+      })
+    })
+
+    setTimeout(() => {
+      setVisible(false)
+      showMessage({
+        message: "You're already exit",
+        type: 'info',
+        position: 'center'
+      });
+      navigation.replace('Auth')
+    }, 1000);
+  }
   return (
     <DrawerContentScrollView {...props}>
+      <Spinner
+        visible={visible}
+        textContent={'Processing...'}
+      />
       <View style={styles.drawerContent}>
         <View style={styles.userInfoSection}>
           <Avatar.Image
@@ -86,7 +134,7 @@ function DrawerContent({ navigation }, props) {
               />
             )}
             label="Sign Out"
-            onPress={() => { }}
+            onPress={signOut}
           />
         </Drawer.Section>
         <Drawer.Section title="Preferences">
