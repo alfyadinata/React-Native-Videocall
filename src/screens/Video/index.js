@@ -19,10 +19,10 @@ export default class Video extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            appId: '94f233d9caa04e6aba72d5e5f595286c',
-            token: '00694f233d9caa04e6aba72d5e5f595286cIACqpu38npXcdw9zQmXY6KifWbAQbeXuUssa86bbRCzwGgJkFYoAAAAAEACZqwdIl1rxXwEAAQCXWvFf',
-            channelName: 'channel-x',
-            joinSucceed: false,
+            appId: 'eed8c63731854d0e923cf4d7629a0add',
+            token: null,
+            channelName: 'testerChannel',
+            joinSucceed: true,
             peerIds: [],
         };
         if (Platform.OS === 'android') {
@@ -33,8 +33,9 @@ export default class Video extends Component {
         }
     }
 
-    componentDidMount() {
-        this.init();
+    async componentDidMount() {
+        await this.init();
+        await this.startCall();
     }
 
     /**
@@ -107,6 +108,7 @@ export default class Video extends Component {
     endCall = async () => {
         await this._engine?.leaveChannel();
         this.setState({ peerIds: [], joinSucceed: false });
+        this.navigation.goBack()
     };
 
     render() {
